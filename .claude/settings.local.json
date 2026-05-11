@@ -28,7 +28,15 @@
       "Bash(findstr :4300)",
       "Bash(tasklist)",
       "Bash(findstr /i \"node\")",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(node -e \"const http=require\\('http'\\);http.get\\('http://localhost:3000',r=>{console.log\\('Server up:',r.statusCode\\)}\\).on\\('error',e=>console.log\\('Not running:',e.code\\)\\)\")",
+      "Bash(node server.js)",
+      "Bash(node -e \"const http=require\\('http'\\);http.get\\('http://localhost:4300',r=>{console.log\\('Server up:',r.statusCode\\)}\\).on\\('error',e=>console.log\\('Not running:',e.code\\)\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const http=require\\('http'\\);http.get\\('http://localhost:4300',r=>{console.log\\('OK',r.statusCode\\)}\\).on\\('error',e=>console.log\\('down',e.code\\)\\)\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\TGD749\\\\Documents\\\\Application\\\\RCA_Application\" -Recurse -File)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Sort-Object)"
     ]
   }
 }

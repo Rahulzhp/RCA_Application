@@ -11,20 +11,31 @@
     html, body {
       height: 100%; font-family: 'Inter', sans-serif;
       font-size: 14px; -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    /* ── Fixed background — stays in sync with browser zoom ── */
+    .page-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('../images/bgimage.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #0f172a;
+      z-index: 0;
     }
 
     /* ── Page layout ── */
     .login-page {
       position: relative; z-index: 1;
-      width: 100%; min-height: 100vh;
+      width: 100%; height: 100vh;
       display: flex;
       align-items: stretch;
       justify-content: space-between;
-      padding: 44px 72px;
-      background-image: url('../images/bgimage.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      padding: clamp(16px, 4.5vh, 44px) clamp(24px, 5vw, 72px);
+      overflow: hidden;
     }
 
     /* ════════════════════════════════════
@@ -35,7 +46,8 @@
       display: flex;
       flex-direction: column;
       max-width: 400px;
-      gap: 14px;
+      gap: clamp(8px, 1.2vh, 14px);
+      overflow: hidden;
     }
 
     /* Headline block */
@@ -43,7 +55,7 @@
       animation: slideUp .6s cubic-bezier(.34,1.4,.64,1) .05s both;
     }
     .info-headline .eyebrow {
-      font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.6px;
       text-transform: uppercase; color: #6366f1; margin-bottom: 12px;
       display: flex; align-items: center; gap: 8px;
     }
@@ -52,7 +64,7 @@
       background: #6366f1; border-radius: 2px;
     }
     .info-headline h2 {
-      font-size: 32px; font-weight: 800; color: #0f172a;
+      font-size: clamp(22px, 3.5vh, 32px); font-weight: 800; color: #0f172a;
       line-height: 1.15; letter-spacing: -1px; margin-bottom: 12px;
     }
     .info-headline h2 em { font-style: normal; color: #2563eb; }
@@ -64,7 +76,7 @@
     .float-card {
       background: #ffffff;
       border: 1px solid rgba(99,102,241,0.12);
-      border-radius: 16px; padding: 16px 18px;
+      border-radius: 16px; padding: clamp(10px, 1.5vh, 16px) clamp(12px, 1.4vw, 18px);
       animation: slideUp .6s cubic-bezier(.34,1.4,.64,1) both;
       position: relative; overflow: hidden;
       box-shadow: 0 2px 12px rgba(99,102,241,0.07), 0 1px 3px rgba(0,0,0,0.05);
@@ -89,14 +101,14 @@
     }
     @keyframes pulseDot { 0%,100%{opacity:1} 50%{opacity:.4} }
     .fc-label { font-size: 12.5px; font-weight: 600; color: #1e293b; }
-    .fc-meta  { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+    .fc-meta  { font-size: 12px; color: #94a3b8; margin-top: 2px; }
     .fc-body  { font-size: 12px; color: #64748b; line-height: 1.65; }
     .fc-accent{ color: #6366f1; font-weight: 600; }
 
     .fc-stats { display: flex; gap: 24px; }
     .fc-stat  { text-align: center; }
-    .fc-stat-num { font-size: 24px; font-weight: 800; line-height: 1; letter-spacing: -0.5px; }
-    .fc-stat-lbl { font-size: 9.5px; color: #94a3b8; text-transform: uppercase; letter-spacing: .7px; margin-top: 5px; }
+    .fc-stat-num { font-size: clamp(18px, 2.8vh, 24px); font-weight: 800; line-height: 1; letter-spacing: -0.5px; }
+    .fc-stat-lbl { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: .7px; margin-top: 5px; }
     .num-crit { color: #f87171; }
     .num-high { color: #fb923c; }
     .num-med  { color: #fbbf24; }
@@ -126,7 +138,7 @@
       font-size: 12px; font-weight: 600; color: #1e293b; line-height: 1.3;
     }
     .info-feature-sub {
-      font-size: 10.5px; color: #94a3b8; line-height: 1.4; margin-top: 2px; max-width: 115px;
+      font-size: 11px; color: #94a3b8; line-height: 1.4; margin-top: 2px; max-width: 115px;
     }
 
     /* ════════════════════════════════════
@@ -137,12 +149,13 @@
       align-self: center;
       background: #ffffff;
       border: 1px solid rgba(99,102,241,0.10);
-      border-radius: 24px; padding: 40px 38px;
+      border-radius: 24px; padding: clamp(22px, 3.5vh, 40px) clamp(22px, 2.8vw, 38px);
       box-shadow:
         0 0 0 1px rgba(99,102,241,0.04),
         0 24px 64px rgba(0,0,0,0.12),
         0 4px 16px rgba(0,0,0,0.06);
-      position: relative; overflow: hidden;
+      position: relative; overflow-x: hidden; overflow-y: auto;
+      max-height: calc(100vh - clamp(32px, 9vh, 88px));
       animation: cardIn .55s cubic-bezier(.34,1.4,.64,1) .06s both;
     }
     @keyframes cardIn {
@@ -156,17 +169,17 @@
     }
 
     /* Brand */
-    .sp-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
+    .sp-brand { display: flex; align-items: center; gap: 12px; margin-bottom: clamp(14px, 2.5vh, 26px); }
     .rca-logo-img { height: 40px; width: auto; flex-shrink: 0; object-fit: contain; }
     .sp-brand-name { font-size: 15px; font-weight: 800; color: #0f172a; letter-spacing: -.4px; }
-    .sp-brand-sub  { font-size: 10.5px; color: #94a3b8; margin-top: 2px; letter-spacing: .3px; }
+    .sp-brand-sub  { font-size: 11px; color: #94a3b8; margin-top: 2px; letter-spacing: .3px; }
 
     /* Heading */
     .sp-heading {
-      font-size: 26px; font-weight: 800; color: #0f172a;
+      font-size: clamp(20px, 2.8vh, 26px); font-weight: 800; color: #0f172a;
       letter-spacing: -.6px; line-height: 1.18; margin-bottom: 6px;
     }
-    .sp-sub { font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 26px; }
+    .sp-sub { font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: clamp(14px, 2.5vh, 26px); }
 
     /* Alert */
     .auth-alert {
@@ -176,13 +189,13 @@
       animation: fadeSlide .25s ease both;
     }
     .auth-alert.hidden { display: none; }
-    .auth-alert.error   { background: rgba(248,113,113,0.10); border: 1px solid rgba(248,113,113,0.28); color: #f87171; }
-    .auth-alert.success { background: rgba(52,211,153,0.10);  border: 1px solid rgba(52,211,153,0.28);  color: #34d399; }
-    .auth-alert.info    { background: rgba(91,163,245,0.10);  border: 1px solid rgba(91,163,245,0.28);  color: #5ba3f5; }
+    .auth-alert.error   { background: rgba(248,113,113,0.10); border: 1px solid rgba(248,113,113,0.28); color: #dc2626; }
+    .auth-alert.success { background: rgba(52,211,153,0.10);  border: 1px solid rgba(52,211,153,0.28);  color: #059669; }
+    .auth-alert.info    { background: rgba(91,163,245,0.10);  border: 1px solid rgba(91,163,245,0.28);  color: #1d4ed8; }
     @keyframes fadeSlide { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:translateY(0)} }
 
     /* Form fields */
-    .form-group { margin-bottom: 16px; }
+    .form-group { margin-bottom: clamp(10px, 1.8vh, 16px); }
     .form-label {
       display: block; font-size: 11px; font-weight: 600;
       color: #475569; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 8px;
@@ -196,7 +209,7 @@
     .form-input {
       width: 100%; background: #f1f5fb;
       border: 1px solid #e2e8f0;
-      border-radius: 11px; padding: 13px 14px 13px 42px;
+      border-radius: 11px; padding: clamp(9px, 1.4vh, 13px) 14px clamp(9px, 1.4vh, 13px) 42px;
       color: #0f172a; font-size: 14px; font-family: inherit; outline: none;
       transition: border-color .2s, background .2s, box-shadow .2s;
       line-height: 1.4;
@@ -209,6 +222,18 @@
       box-shadow: 0 0 0 3px rgba(99,102,241,0.10);
     }
     .input-wrap:focus-within .input-icon { color: #6366f1; }
+    .form-input:focus-visible {
+      outline: 2px solid #6366f1;
+      outline-offset: 1px;
+    }
+    .forgot-link:focus-visible,
+    .btn-primary:focus-visible,
+    .eye-btn:focus-visible,
+    .sp-link:focus-visible {
+      outline: 2px solid #6366f1;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
     .form-input.has-eye { padding-right: 42px; }
 
     .eye-btn {
@@ -219,7 +244,7 @@
     .eye-btn:hover { color: #6366f1; }
 
     .forgot-link {
-      display: block; text-align: right; font-size: 11.5px;
+      display: block; text-align: right; font-size: 12px;
       color: #94a3b8; text-decoration: none; margin-top: 6px; transition: color .2s;
     }
     .forgot-link:hover { color: #6366f1; }
@@ -229,7 +254,7 @@
       width: 100%; margin-top: 10px;
       background: #2563eb;
       color: #fff; border: none; border-radius: 11px;
-      padding: 14px; font-size: 14px; font-weight: 600;
+      padding: clamp(10px, 1.5vh, 14px); font-size: 14px; font-weight: 600;
       font-family: inherit; cursor: pointer; transition: all .2s;
       box-shadow: 0 4px 20px rgba(37,99,235,0.40);
       display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -251,7 +276,7 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* Divider */
-    .sp-divider { display: flex; align-items: center; gap: 12px; margin: 20px 0 16px; }
+    .sp-divider { display: flex; align-items: center; gap: 12px; margin: clamp(10px, 1.8vh, 20px) 0 clamp(8px, 1.5vh, 16px); }
     .sp-divider-line { flex: 1; height: 1px; background: #e2e8f0; }
     .sp-divider-text { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: .6px; }
 
@@ -269,10 +294,71 @@
       animation: toastIn .3s cubic-bezier(.34,1.56,.64,1) both;
       max-width: 320px; background: #fff;
     }
-    .toast.success { background: rgba(52,211,153,.12);  border: 1px solid rgba(52,211,153,.28);  color: #34d399; }
-    .toast.error   { background: rgba(248,113,113,.12); border: 1px solid rgba(248,113,113,.28); color: #f87171; }
-    .toast.info    { background: rgba(91,163,245,.12);  border: 1px solid rgba(91,163,245,.28);  color: #5ba3f5; }
+    .toast.success { background: rgba(52,211,153,.12);  border: 1px solid rgba(52,211,153,.28);  color: #059669; }
+    .toast.error   { background: rgba(248,113,113,.12); border: 1px solid rgba(248,113,113,.28); color: #dc2626; }
+    .toast.info    { background: rgba(91,163,245,.12);  border: 1px solid rgba(91,163,245,.28);  color: #1d4ed8; }
     @keyframes toastIn { from{opacity:0;transform:translateX(16px)} to{opacity:1;transform:translateX(0)} }
+
+    /* SSO button */
+    .btn-sso {
+      width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 11px;
+      padding: clamp(9px, 1.4vh, 13px) 16px; font-size: 14px; font-weight: 500;
+      font-family: inherit; color: #1e293b; cursor: pointer;
+      transition: background .2s, border-color .2s, box-shadow .2s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .btn-sso:hover { background: #f8fafc; border-color: #cbd5e1; box-shadow: 0 2px 8px rgba(0,0,0,0.10); }
+    .btn-sso:active { transform: translateY(1px); }
+    .btn-sso:focus-visible { outline: 2px solid #6366f1; outline-offset: 2px; border-radius: 11px; }
+
+    /* Segmented bar */
+    .fc-seg-track {
+      height: 6px; border-radius: 6px; overflow: hidden;
+      background: #f1f5f9; margin-bottom: 14px;
+      display: flex; gap: 2px;
+    }
+    #fc-seg-track.fc-skeleton { min-height: 6px; height: 6px; }
+    .fc-seg { height: 100%; border-radius: 3px; transition: flex .7s cubic-bezier(.34,1.2,.64,1); flex: 0; }
+    .fc-seg-crit      { background: #f87171; }
+    .fc-seg-high      { background: #fb923c; }
+    .fc-seg-med       { background: #fbbf24; }
+    .fc-seg-base      { background: #e2e8f0; }
+    .fc-seg-all-clear { background: #34d399; opacity: .45; border-radius: 6px; }
+
+    /* Remember me */
+    .form-check { display: flex; align-items: flex-start; gap: 10px; margin: clamp(2px, 0.4vh, 4px) 0 clamp(8px, 1.2vh, 12px); }
+    .check-input {
+      width: 15px; height: 15px; margin-top: 3px; flex-shrink: 0;
+      accent-color: #6366f1; cursor: pointer;
+    }
+    .check-label { font-size: 13px; color: #475569; cursor: pointer; line-height: 1.4; }
+    .check-hint  { display: block; font-size: 11px; color: #94a3b8; margin-top: 2px; }
+
+    /* Skeleton shimmer */
+    .fc-skeleton {
+      background: linear-gradient(90deg, #e2e8f0 25%, #f8fafc 50%, #e2e8f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 4px;
+      color: transparent !important;
+      min-height: 1em;
+      user-select: none;
+    }
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
 
     /* Responsive */
     @media (max-width: 900px) {
@@ -286,6 +372,7 @@
 </head>
 <body>
 
+  <div class="page-bg"></div>
   <div class="login-page">
 
     <!-- ══ LEFT: Brand + cards + features ══ -->
@@ -303,11 +390,11 @@
         <div class="fc-head">
           <div class="fc-dot" id="fc-dot"></div>
           <div>
-            <div class="fc-label" id="fc-incident-label">Loading…</div>
-            <div class="fc-meta" id="fc-incident-meta">—</div>
+            <div class="fc-label fc-skeleton" id="fc-incident-label">Loading…</div>
+            <div class="fc-meta fc-skeleton" id="fc-incident-meta">—</div>
           </div>
         </div>
-        <div class="fc-body" id="fc-incident-body">Fetching latest incident data…</div>
+        <div class="fc-body fc-skeleton" id="fc-incident-body">Fetching latest incident data…</div>
       </div>
 
       <!-- Card 2: stats -->
@@ -315,11 +402,17 @@
         <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.9px;margin-bottom:13px;">
           Incident Overview
         </div>
+        <div class="fc-seg-track fc-skeleton" id="fc-seg-track" aria-hidden="true">
+          <div class="fc-seg fc-seg-crit" id="fc-seg-c" style="flex:0"></div>
+          <div class="fc-seg fc-seg-high" id="fc-seg-h" style="flex:0"></div>
+          <div class="fc-seg fc-seg-med"  id="fc-seg-m" style="flex:0"></div>
+          <div class="fc-seg fc-seg-base" id="fc-seg-b" style="flex:1"></div>
+        </div>
         <div class="fc-stats">
-          <div class="fc-stat"><div class="fc-stat-num num-crit" id="fc-stat-critical">—</div><div class="fc-stat-lbl">Critical</div></div>
-          <div class="fc-stat"><div class="fc-stat-num num-high" id="fc-stat-high">—</div><div class="fc-stat-lbl">High</div></div>
-          <div class="fc-stat"><div class="fc-stat-num num-med" id="fc-stat-medium">—</div><div class="fc-stat-lbl">Medium</div></div>
-          <div class="fc-stat"><div class="fc-stat-num num-ok" id="fc-stat-total">—</div><div class="fc-stat-lbl">Total</div></div>
+          <div class="fc-stat"><div class="fc-stat-num num-crit fc-skeleton" id="fc-stat-critical">—</div><div class="fc-stat-lbl">Critical</div></div>
+          <div class="fc-stat"><div class="fc-stat-num num-high fc-skeleton" id="fc-stat-high">—</div><div class="fc-stat-lbl">High</div></div>
+          <div class="fc-stat"><div class="fc-stat-num num-med fc-skeleton" id="fc-stat-medium">—</div><div class="fc-stat-lbl">Medium</div></div>
+          <div class="fc-stat"><div class="fc-stat-num num-ok fc-skeleton" id="fc-stat-total">—</div><div class="fc-stat-lbl">Total</div></div>
         </div>
       </div>
 
@@ -333,7 +426,7 @@
           </div>
           <div>
             <div class="fc-label" id="fc-latest-label">Latest Report</div>
-            <div class="fc-meta" id="fc-latest-meta">—</div>
+            <div class="fc-meta fc-skeleton" id="fc-latest-meta">—</div>
           </div>
         </div>
         <div style="margin-top:10px;padding-top:10px;border-top:1px solid #f1f5f9;">
@@ -343,7 +436,7 @@
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
               </svg>
             </div>
-            <span style="font-size:11.5px;color:#94a3b8;" id="fc-latest-sub">Tracking root cause analysis</span>
+            <span class="fc-skeleton" style="font-size:12px;color:#94a3b8;" id="fc-latest-sub">Tracking root cause analysis</span>
           </div>
         </div>
       </div>
@@ -400,11 +493,28 @@
       </div>
 
       <!-- Alert -->
-      <div id="alert" class="auth-alert hidden"></div>
+      <div id="alert" class="auth-alert hidden" role="alert" aria-live="assertive" aria-atomic="true"></div>
 
       <!-- Heading -->
       <h1 class="sp-heading">Welcome back</h1>
       <p class="sp-sub">Sign in to continue managing incidents and reports.</p>
+
+      <!-- SSO -->
+      <button type="button" class="btn-sso" id="sso-btn" aria-label="Continue with Microsoft">
+        <svg width="16" height="16" viewBox="0 0 21 21" aria-hidden="true">
+          <rect x="1"  y="1"  width="9" height="9" fill="#f25022"/>
+          <rect x="11" y="1"  width="9" height="9" fill="#7fba00"/>
+          <rect x="1"  y="11" width="9" height="9" fill="#00a4ef"/>
+          <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
+        </svg>
+        <span>Continue with Microsoft</span>
+      </button>
+
+      <div class="sp-divider">
+        <div class="sp-divider-line"></div>
+        <span class="sp-divider-text">or sign in with email</span>
+        <div class="sp-divider-line"></div>
+      </div>
 
       <!-- Form -->
       <form id="login-form" novalidate autocomplete="on">
@@ -444,6 +554,13 @@
           <a href="/auth/forgot-password.html" class="forgot-link">Forgot password?</a>
         </div>
 
+        <div class="form-check">
+          <input type="checkbox" class="check-input" id="remember-me" name="remember-me">
+          <label class="check-label" for="remember-me">
+            Keep me signed in
+          </label>
+        </div>
+
         <button type="submit" class="btn-primary" id="submit-btn">
           <div class="btn-spinner"></div>
           <span class="btn-label">Sign In</span>
@@ -452,8 +569,6 @@
       </form>
 
       <div class="sp-divider">
-        <div class="sp-divider-line"></div>
-        <span class="sp-divider-text">or</span>
         <div class="sp-divider-line"></div>
       </div>
 
@@ -479,15 +594,30 @@
       return Math.floor(diff / 86400) + 'd ago';
     }
 
+    function clearSkeletons() {
+      document.querySelectorAll('.fc-skeleton').forEach(el => el.classList.remove('fc-skeleton'));
+    }
+
     (async () => {
       try {
         const res  = await fetch('/rca/stats');
         const data = await res.json();
+        clearSkeletons();
 
         document.getElementById('fc-stat-critical').textContent = data.critical ?? 0;
         document.getElementById('fc-stat-high').textContent     = data.high     ?? 0;
         document.getElementById('fc-stat-medium').textContent   = data.medium   ?? 0;
         document.getElementById('fc-stat-total').textContent    = data.total    ?? 0;
+
+        const _tot  = Math.max(data.total || 0, 1);
+        const _crit = (((data.critical || 0) / _tot) * 100).toFixed(1);
+        const _high = (((data.high     || 0) / _tot) * 100).toFixed(1);
+        const _med  = (((data.medium   || 0) / _tot) * 100).toFixed(1);
+        const _base = Math.max(100 - parseFloat(_crit) - parseFloat(_high) - parseFloat(_med), 3).toFixed(1);
+        document.getElementById('fc-seg-c').style.flex = _crit;
+        document.getElementById('fc-seg-h').style.flex = _high;
+        document.getElementById('fc-seg-m').style.flex = _med;
+        document.getElementById('fc-seg-b').style.flex = _base;
 
         if (data.latest) {
           const prio   = (data.latest.priority || '').toLowerCase();
@@ -509,14 +639,23 @@
             data.total + ' report' + (data.total !== 1 ? 's' : '') + ' across <span class="fc-accent">' + (data.critical + data.high) + '</span> active incidents';
         } else {
           document.getElementById('fc-dot').style.background = '#34d399';
-          document.getElementById('fc-incident-label').textContent = 'Platform Ready';
-          document.getElementById('fc-incident-meta').textContent  = 'No active incidents';
-          document.getElementById('fc-incident-body').textContent  = 'Start logging root cause analysis reports to track and resolve incidents.';
-          document.getElementById('fc-latest-label').textContent   = 'No reports yet';
-          document.getElementById('fc-latest-meta').textContent    = 'Create your first RCA report';
-          document.getElementById('fc-latest-sub').textContent     = 'Begin tracking incidents and root causes';
+          document.getElementById('fc-incident-label').textContent = 'All Clear';
+          document.getElementById('fc-incident-meta').textContent  = 'No active incidents · System healthy';
+          document.getElementById('fc-incident-body').innerHTML    =
+            'Your environment is <span class="fc-accent" style="color:#10b981">incident-free</span>. Log a new RCA when an incident arises.';
+          document.getElementById('fc-seg-c').style.flex = '0';
+          document.getElementById('fc-seg-h').style.flex = '0';
+          document.getElementById('fc-seg-m').style.flex = '0';
+          document.getElementById('fc-seg-b').style.background = '#34d399';
+          document.getElementById('fc-seg-b').style.opacity = '0.45';
+          document.getElementById('fc-seg-b').style.flex = '1';
+          document.getElementById('fc-latest-label').textContent = 'No reports yet';
+          document.getElementById('fc-latest-meta').textContent  = 'Ready to track your first incident';
+          document.getElementById('fc-latest-sub').textContent   = 'When incidents occur, RCAs will appear here';
         }
       } catch (_) {
+        clearSkeletons();
+        document.getElementById('fc-seg-b').style.flex = '1';
         document.getElementById('fc-dot').style.background = '#64748b';
         document.getElementById('fc-incident-label').textContent = 'Incident Intelligence';
         document.getElementById('fc-incident-meta').textContent  = 'Real-time tracking';
