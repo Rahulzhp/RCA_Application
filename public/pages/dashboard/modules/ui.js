@@ -94,4 +94,9 @@ export function populateNavbarUser() {
 
   if (avatarEl) avatarEl.textContent = initials;
   if (nameEl) nameEl.textContent = user.name || user.email;
+
+  const greetingEl = document.getElementById('home-user-name');
+  if (greetingEl) {
+    greetingEl.textContent = user.name || user.email || 'there';
+  }
 }

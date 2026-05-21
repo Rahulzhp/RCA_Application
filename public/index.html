@@ -17,14 +17,14 @@
   <aside class="sidebar" id="sidebar">
 
     <!-- Brand -->
-    <div class="sb-brand">
+    <div class="sb-brand" onclick="switchView('home')" title="Go to home" style="cursor:pointer;">
       <img src="/images/image.png" alt="RCA Manager" class="sb-logo" style="border-radius:0;">
       <span class="sb-wordmark">RCA <em>Manager</em></span>
     </div>
 
     <!-- Navigation -->
     <nav class="sb-nav">
-      <button class="sb-pill active" id="pill-create" onclick="switchView('create')">
+      <button class="sb-pill" id="pill-create" onclick="switchView('create')">
         <span class="sb-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>
@@ -82,6 +82,222 @@
   </aside>
   <main class="app-main">
 
+  <!-- ══════════════ HOME LANDING PAGE ══════════════ -->
+  <!-- <div class="view active" id="view-home">
+    <div class="hero">
+      <div class="hero-accent-bar" aria-hidden="true"></div>
+      <div class="hero-inner hero-inner--centered">
+        <div class="hero-left" style="width:100%;text-align:center;">
+          <div class="hero-eyebrow">Welcome to RCA Manager</div>
+          <h1 class="hero-title-main">Hello, <span id="home-user-name">there</span></h1>
+          <p class="hero-subtitle">Create and manage root cause analysis reports in one simple dashboard.</p>
+          <div class="home-actions" style="display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap;">
+            <button class="btn-create" type="button" onclick="switchView('create')">Create New RCA</button>
+            <button class="btn-view" type="button" onclick="switchView('reports')">View Reports</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- ══════════════ HOME LANDING PAGE ══════════════ -->
+<div class="view active" id="view-home">
+
+  <!-- HERO SECTION -->
+  <section class="landing-hero">
+    <div class="landing-overlay"></div>
+
+    <div class="landing-content">
+
+      <div class="landing-left">
+        <span class="landing-badge">SMART RCA MANAGEMENT</span>
+
+        <h1 class="landing-title">
+          Create Professional
+          <span>Root Cause Analysis</span>
+          Reports in Minutes
+        </h1>
+
+        <p class="landing-description">
+          RCA Manager helps teams investigate incidents, identify root causes,
+          generate detailed RCA reports, and export them instantly into
+          PDF or Excel format with a modern workflow system.
+        </p>
+
+        <div class="landing-buttons">
+          <button class="btn-primary" onclick="switchView('create')">
+            Create RCA
+          </button>
+
+          <button class="btn-secondary" onclick="switchView('reports')">
+            View Reports
+          </button>
+        </div>
+
+        <div class="landing-stats">
+          <div class="stat-box">
+            <h2>100+</h2>
+            <span>Reports Generated</span>
+          </div>
+
+          <div class="stat-box">
+            <h2>24/7</h2>
+            <span>Incident Tracking</span>
+          </div>
+
+          <div class="stat-box">
+            <h2>PDF/XLSX</h2>
+            <span>Export Support</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="landing-right">
+        <img
+          src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop"
+          alt="RCA Dashboard"
+        />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features-section">
+
+    <div class="section-header">
+      <h2>Powerful RCA Features</h2>
+      <p>
+        Everything you need to investigate incidents and generate
+        professional root cause analysis documents.
+      </p>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <img src="https://img.icons8.com/fluency/96/error.png">
+        <h3>Incident Tracking</h3>
+        <p>
+          Track incidents with complete timeline and issue history.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://img.icons8.com/fluency/96/combo-chart.png">
+        <h3>Analytics</h3>
+        <p>
+          Analyze failures and identify patterns quickly.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://img.icons8.com/fluency/96/pdf.png">
+        <h3>PDF Export</h3>
+        <p>
+          Generate professional RCA reports instantly in PDF format.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://img.icons8.com/color/96/ms-excel.png">
+        <h3>Excel Export</h3>
+        <p>
+          Download RCA data in XLSX format for reporting and auditing.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://img.icons8.com/fluency/96/teamwork.png">
+        <h3>Team Collaboration</h3>
+        <p>
+          Collaborate with your team during investigation workflows.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <img src="https://img.icons8.com/fluency/96/security-checked.png">
+        <h3>Secure Management</h3>
+        <p>
+          Securely manage RCA documents and incident reports.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section">
+
+    <div class="about-left">
+      <img
+        src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop"
+        alt="About RCA"
+      />
+    </div>
+
+    <div class="about-right">
+      <span class="section-tag">ABOUT APPLICATION</span>
+
+      <h2>Why RCA Manager?</h2>
+
+      <p>
+        RCA Manager simplifies the entire Root Cause Analysis process
+        by helping organizations document incidents, identify causes,
+        assign corrective actions, and generate export-ready reports.
+      </p>
+
+      <ul class="about-list">
+        <li>✔ Modern and user-friendly interface</li>
+        <li>✔ Fast RCA document generation</li>
+        <li>✔ Export to PDF and Excel</li>
+        <li>✔ Centralized report management</li>
+        <li>✔ Easy incident workflow tracking</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- WORKFLOW -->
+  <section class="workflow-section">
+
+    <div class="section-header">
+      <h2>Simple RCA Workflow</h2>
+    </div>
+
+    <div class="workflow-grid">
+
+      <div class="workflow-card">
+        <div class="workflow-number">1</div>
+        <h3>Create Incident</h3>
+        <p>Enter issue details and incident information.</p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-number">2</div>
+        <h3>Analyze Cause</h3>
+        <p>Investigate and identify the root cause.</p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-number">3</div>
+        <h3>Generate Report</h3>
+        <p>Export professional RCA documents instantly.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="landing-footer">
+    <h3>RCA Manager</h3>
+    <p>
+      Smart Root Cause Analysis & Incident Reporting Platform
+    </p>
+  </footer>
+
+</div>
+
   <!-- ══════════════ STATS TICKER ══════════════ -->
   <div class="stats-ticker">
     <div class="ticker-track">
@@ -96,7 +312,7 @@
   </div>
 
   <!-- ══════════════ VIEW: NEW INCIDENT ══════════════ -->
-  <div class="view active" id="view-create">
+  <div class="view" id="view-create">
 
     <!-- Page Header -->
     <div class="hero">
