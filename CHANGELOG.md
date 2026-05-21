@@ -1,11 +1,11 @@
+## [1.0.0-Pre08] - 21-Apr-2026
+### Added
+- [Rahul] Added Landing Page for better User Interface.
 
 ## [1.0.0-Pre08] - 11-May-2026
 ### Added
 - [Jeeva] Added theam
 
-## [1.0.0-Pre08] - 21-Apr-2026
-### Added
-- [Rahul] Added Landing Page for better User Interface.
 
 ## [1.0.0-Pre07] - 19-Apr-2026
 ### Added
